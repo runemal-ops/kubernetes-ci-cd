@@ -36,6 +36,9 @@ parts:
 
       - cap: Let’s make a change to an HTML file in the cloned project. Open the /applications/hello-kenzan/index.html file in your favorite text editor (for example, you can use nano by running the command 'nano applications/hello-kenzan/index.html' in a separate terminal). Change some text inside one of the <p> tags. For example, change “Hello from Kenzan!” to “Hello from Me!”. Save the file. 
         com: echo ''
+      
+      - cap: Be sure you are able to run docker-env for your minikube setup, Ensure you are not missing the space before
+        com:   @FOR /f "tokens=* delims=" %i IN ('minikube docker-env') DO %i
 
       - cap: Now let’s build an image, giving it a special name that points to our local cluster registry.
         com: docker build -t 127.0.0.1:30400/hello-kenzan:latest -f applications/hello-kenzan/Dockerfile applications/hello-kenzan
